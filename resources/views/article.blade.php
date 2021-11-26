@@ -5,7 +5,8 @@ Article
 @section("content")
 <section>
     <div class="container">
-        <form action="">
+        <form action="{{route('articleModel.store')}}" method="post" enctype="multipart/form-data">
+        @csrf
             <legend class="col-form-label">Article</legend>
             <div class="form-group row">
                 <label for="name" class="col-md-2 col-form-label">Article Name</label>
@@ -14,15 +15,15 @@ Article
                 </div>
             </div>
             <div class="form-group row">
-                <label for="name" class="col-md-2 col-form-label">Article Name</label>
+                <label for="name" class="col-md-2 col-form-label">Article Description</label>
                 <div class="col-md-6">
-                    <textarea name="text" class="form-control" rows="5" cols="50" required></textarea>
+                    <textarea name="description" class="form-control" rows="5" cols="50" required></textarea>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="name" class="col-md-2 col-form-label">Article Name</label>
+                <label for="name" class="col-md-2 col-form-label">Article Image</label>
                 <div class="col-md-6">
-                    <input type="file" name="name" required>
+                    <input type="file" name="image" required>
                 </div>
             </div>
             <div class="row">

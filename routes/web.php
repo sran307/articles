@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\articleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('layouts.layout');
 });
 Route::view("/","home");
-Route::view("/home","home");
+Route::view("/home","home")->name("home");
 Route::view("/about","about");
+Route::resource('articleModel',articleController::class);
 Auth::routes();
 Route::middleware(["auth"])->group(function(){
     Route::view("/article","article");

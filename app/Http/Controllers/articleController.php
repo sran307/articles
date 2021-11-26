@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\articleModel;
 
 class articleController extends Controller
 {
@@ -13,7 +15,7 @@ class articleController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +36,25 @@ class articleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //image name taking and move it to the folder
+        $image=$request->file("image");
+        //destination folder 
+        $destination="images/";
+        //taking image name and move it to the folder
+        $image_name=$image->getClientOriginalName();
+        $image->move($destination,$image_name);
+        DB::beginTransaction();
+        try{
+            articleModel::create([
+                "Name"=>$request->post("name"),
+                "Description"=>$request->post("description"),
+                "Image"=>$image_name
+            ]);
+            DB::commit();
+            return redirect()->route("home");
+        }catch(\Exception $e){
+            DB::rollback();
+        }
     }
 
     /**
