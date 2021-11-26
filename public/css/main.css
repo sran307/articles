@@ -1,0 +1,15 @@
+ul{
+    list-style-type: none;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    
+}
+#navbar-heading, ul>li>a{
+    color: rgb(255,255,255);
+    transition: all .5s linear;
+}
+.active, ul>li>a:hover{
+    color: rgb(200,200,200);
+    background-color: rgb(100,100,100);
+}
