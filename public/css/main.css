@@ -24,3 +24,6 @@ ul{
     justify-content: center;
     align-items: center;
 }
+option, select{
+    color:rgb(255,255,255);
+}

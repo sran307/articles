@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\articleController;
 use App\Http\Controllers\mainController;
+use App\Http\Controllers\tagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +26,10 @@ Route::get('/home', function () {
 })->name("home");
 //Route::view("/home","home")->name("home");
 Route::view("/about","about");
-Route::get("/show_article/{id}", [articleController::class,"show_article"]);
+Route::get("/show_article/{id}", [articleController::class,"show_article"])->name("show-article");
 Route::resource('articleModel',articleController::class);
+
+Route::resource("tagModel",tagController::class);
 Auth::routes();
 Route::middleware(["auth"])->group(function(){
     Route::view("/article","article");
