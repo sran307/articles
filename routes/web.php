@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\articleController;
+use App\Http\Controllers\mainController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +17,15 @@ use App\Http\Controllers\articleController;
 Route::get('/', function () {
     return view('layouts.layout');
 });
-Route::view("/","home");
-Route::view("/home","home")->name("home");
+Route::get('/', function () {
+    return redirect()->route('articleModel.index');
+});
+Route::get('/home', function () {
+    return redirect()->route('articleModel.index');
+})->name("home");
+//Route::view("/home","home")->name("home");
 Route::view("/about","about");
+Route::get("/show_article/{id}", [articleController::class,"show_article"]);
 Route::resource('articleModel',articleController::class);
 Auth::routes();
 Route::middleware(["auth"])->group(function(){

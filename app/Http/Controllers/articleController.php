@@ -15,7 +15,8 @@ class articleController extends Controller
      */
     public function index()
     {
-        
+        $articles=articleModel::all();
+        return view("home",compact("articles"));
     }
 
     /**
@@ -51,7 +52,7 @@ class articleController extends Controller
                 "Image"=>$image_name
             ]);
             DB::commit();
-            return redirect()->route("home");
+            return redirect()->route("articleModel.index");
         }catch(\Exception $e){
             DB::rollback();
         }
@@ -65,7 +66,7 @@ class articleController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
@@ -101,4 +102,10 @@ class articleController extends Controller
     {
         //
     }
+    public function show_article($id)
+    {
+        $articles=articleModel::where("id",$id)->get();
+        return view("show-article",compact("articles"));
+    }
+    
 }

@@ -4,7 +4,7 @@ About
 @endsection
 @section("content")
 <section>
-    <div class="container">
+    <div class="container my-5">
         <h5>about us</h5>
         <div>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab aspernatur ipsum molestias. 
